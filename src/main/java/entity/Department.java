@@ -29,6 +29,16 @@ public class Department {
     @Column(name = "update_at", nullable = false)
     @CreationTimestamp
     private LocalDateTime updateAt;
+
+    @PrePersist
+    public void prePersist(){
+        System.out.println("Trước khi thêm vào database");
+    }
+
+    @PostPersist
+    public void postPersist(){
+        System.out.println("Sau khi thêm vào database");
+    }
 }
 
 
