@@ -7,18 +7,14 @@ public class Program {
         try (var factory = HibernateUtil.buildSessionFactory()) {
             factory.inTransaction(session -> {
                var groupAccount = new GroupAccount();
-               var pk = new GroupAccount.PrimaryKey();
-               pk.setAccountId(4);
-               pk.setGroupId(1);
-               groupAccount.setPk(pk);
+               groupAccount.setGroupId(4);
+               groupAccount.setAccountId(1);
                session.persist(groupAccount);
             });
             factory.inTransaction(session -> {
                 var groupAccount = new GroupAccount();
-                var pk = new GroupAccount.PrimaryKey();
-                pk.setAccountId(9);
-                pk.setGroupId(7);
-                groupAccount.setPk(pk);
+                groupAccount.setGroupId(7);
+                groupAccount.setAccountId(9);
                 session.persist(groupAccount);
             });
 
