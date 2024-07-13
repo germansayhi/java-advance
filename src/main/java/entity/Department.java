@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.descriptor.jdbc.CharJdbcType;
@@ -21,9 +22,12 @@ import java.util.UUID;
 public class Department {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JdbcType(CharJdbcType.class)
-    private UUID id;
+    @GenericGenerator(
+            name ="department_id_gerator",
+            strategy = "generator.DepartmentIdGenerator"
+    )
+    @GeneratedValue (generator = "department_id_gerator")
+    private String id;
 
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
