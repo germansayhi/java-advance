@@ -3,51 +3,28 @@ import util.HibernateUtil;
 
 public class Program {
     public static void main(String[] args) {
-        try(var factory = HibernateUtil.buildSessionFactory()){
+        try (var factory = HibernateUtil.buildSessionFactory()) {
             factory.inTransaction(session -> {
                 var department = new Department();
-                department.setName("Giám Đốc");
+                department.setName("Giám đốc");
+                department.setType(Department.Type.PROJECT_MANAGER);
                 session.persist(department);
             });
             factory.inTransaction(session -> {
                 var department = new Department();
-                department.setName("Bảo Vệ");
+                department.setName("Bảo vệ");
+                department.setType(Department.Type.TESTER);
                 session.persist(department);
             });
 
             factory.inSession(session -> {
-                var hpl = "FROM Department";
+                var hql = "FROM Department";
                 var departments = session
-                        .createSelectionQuery(hpl, Department.class)
+                        .createSelectionQuery(hql, Department.class)
                         .getResultList();
                 for (var department : departments) {
-                    System.out.println("🎈department = " + department);
+                    System.out.println("🎯 department = " + department);
                 }
-            });
-
-            factory.inSession(session -> {
-                var department = session.get(Department.class, 1);
-                System.out.println("🐕‍🦺department = " + department);
-            });
-
-            factory.inSession(session -> {
-                var hpl = "FROM Department WHERE name = :name";
-                var departments = session
-                        .createSelectionQuery(hpl, Department.class )
-                        .setParameter("name", "Bảo vệ")
-                        .uniqueResult();
-                System.out.println("❌department = " + departments);
-            });
-
-            factory.inTransaction(session -> {
-                var department = session.get(Department.class, 2);
-                department.setName("Kinh doanh");
-                session.merge(department);
-            });
-
-            factory.inTransaction(session -> {
-                var department =session.get(Department.class, 1);
-                session.remove(department);
             });
         }
     }
