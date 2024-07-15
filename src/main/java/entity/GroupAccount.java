@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 
@@ -26,6 +27,7 @@ public class GroupAccount {
     @JoinColumn(name = "account_id",referencedColumnName = "id", nullable = false)
     private Account account;
 
-    @Column(name = "joined_at",  updatable = false)
+    @Column(name = "joined_at",nullable = false, updatable = false)
+    @CreationTimestamp
     private LocalDate joinedAt;
 }
