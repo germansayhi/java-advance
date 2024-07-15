@@ -23,8 +23,8 @@ public class Account {
     private String email;
 
 
-    @ManyToMany(mappedBy = "accounts")
-    private List<Group> groups;
+    @OneToMany(mappedBy = "account")
+    private List<GroupAccount> groupAccounts;
 
 
 
