@@ -29,23 +29,31 @@ public class Program {
                 session.persist(account2);
 
                 var groupAccount1 = new GroupAccount();
-                groupAccount1.setAccount(account1);
-                groupAccount1.setGroup(group1);
+                var pk1 = new GroupAccount.PrimaryKey();
+                pk1.setGroupId(1);
+                pk1.setAccountId(1);
+                groupAccount1.setPk(pk1);
                 session.persist(groupAccount1);
 
                 var groupAccount2 = new GroupAccount();
-                groupAccount2.setAccount(account2);
-                groupAccount2.setGroup(group1);
+                var pk2 = new GroupAccount.PrimaryKey();
+                pk2.setGroupId(1);
+                pk2.setAccountId(2);
+                groupAccount2.setPk(pk2);
                 session.persist(groupAccount2);
 
                 var groupAccount3 = new GroupAccount();
-                groupAccount3.setAccount(account1);
-                groupAccount3.setGroup(group2);
+                var pk3 = new GroupAccount.PrimaryKey();
+                pk3.setGroupId(2);
+                pk3.setAccountId(2);
+                groupAccount3.setPk(pk3);
                 session.persist(groupAccount3);
 
                 var groupAccount4 = new GroupAccount();
-                groupAccount4.setAccount(account2);
-                groupAccount4.setGroup(group2);
+                var pk4 = new GroupAccount.PrimaryKey();
+                pk4.setGroupId(2);
+                pk4.setAccountId(1);
+                groupAccount4.setPk(pk4);
                 session.persist(groupAccount4);
 
 
