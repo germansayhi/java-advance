@@ -20,8 +20,8 @@ public class Account {
     @Column(name = "email", length = 50, unique = true, nullable = false)
     private String email;
 
-    @JoinColumn(name ="group_id", referencedColumnName = "id", unique = true, nullable = false)
-    @OneToOne
+    @JoinColumn(name ="group_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne
     private Group group;
 
 

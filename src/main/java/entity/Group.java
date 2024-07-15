@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -18,7 +20,7 @@ public class Group {
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "group")
-    private Account account;
+    @OneToMany(mappedBy = "group")
+    private List<Account> accounts;
 
 }
