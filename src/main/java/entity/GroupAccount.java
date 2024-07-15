@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Entity
-@Table(name = "group_account")
+@Table(name = "group_accounts")
 @IdClass(value = GroupAccount.PrimaryKey.class)
 
 public class GroupAccount {
