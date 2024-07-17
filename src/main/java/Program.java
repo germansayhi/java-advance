@@ -7,11 +7,13 @@ public class Program {
         try (var factory = HibernateUtil.buildSessionFactory()) {
             factory.inTransaction(session -> {
                 var circle = new Circle();
+                circle.setId(1);
                 circle.setRadius(5);
                 circle.setColor("red");
                 session.persist(circle);
 
                 var rectangle = new Rectangle();
+                rectangle.setId(2);
                 rectangle.setWidth(3);
                 rectangle.setHeight(4);
                 rectangle.setColor("blue");

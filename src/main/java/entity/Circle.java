@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "circle")
-@PrimaryKeyJoinColumn(name = "id")
+
 public class Circle extends Shape {
     @Column(name = "radius")
     private int radius;
