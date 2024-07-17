@@ -1,17 +1,17 @@
 package util;
 
-import entity.Account;
-import entity.Department;
-import entity.Group;
-import entity.GroupAccount;
+import entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
     public static SessionFactory buildSessionFactory(){
-        var url = "jdbc:mysql://localhost:3306/lesson_03?createDatabaseIfNotExist=true";
+        var url = "jdbc:mysql://localhost:3306/lesson_04?createDatabaseIfNotExist=true";
         var configuration = new Configuration()
+                .addAnnotatedClass(Shape.class)
+                .addAnnotatedClass(Circle.class)
+                .addAnnotatedClass(Rectangle.class)
                 .addAnnotatedClass(Group.class)
                 .addAnnotatedClass(Account.class)
                 .addAnnotatedClass(Department.class)
@@ -22,7 +22,6 @@ public class HibernateUtil {
                 .setProperty(AvailableSettings.GLOBALLY_QUOTED_IDENTIFIERS,"true")
                 .setProperty(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, "true")
                 .setProperty(AvailableSettings.HBM2DDL_AUTO, "create")
-                .setProperty(AvailableSettings.SHOW_SQL,"true")
                 .setProperty(AvailableSettings.SHOW_SQL, "true");
         return configuration.buildSessionFactory();
     }
