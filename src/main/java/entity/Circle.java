@@ -1,16 +1,14 @@
 package entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Entity
-@DiscriminatorValue("circle")
+@Table(name = "circle")
+
 public class Circle extends Shape {
     @Column(name = "radius")
     private int radius;

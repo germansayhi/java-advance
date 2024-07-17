@@ -20,9 +20,9 @@ public class Program {
             });
 
             factory.inSession(session -> {
-                var hql = "FROM Shape";
+                var hql = "FROM Circle";
                 var shapes = session
-                        .createSelectionQuery(hql, Shape.class)
+                        .createSelectionQuery(hql, Circle.class)
                         .getResultList();
                 for (var shape : shapes) {
                     System.out.println("👉 shape = " + shape.getColor());
